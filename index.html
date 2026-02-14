@@ -1,23 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFTVJNTDCN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DFTVJNTDCN');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who to Blame Today? 🎯</title>
+
+    <!-- SEO Meta Tags -->
+    <title>Accountability Roulette</title>
+    <meta name="description" content="Spin the wheel of accountability! A fun team tool to randomly select who's responsible. Perfect for office humor and breaking the ice.">
+    <meta name="keywords" content="accountability roulette, blame wheel, team game, office humor, random selector, wheel spinner, accountability tool, team roulette">
+    <meta name="author" content="Accountability Roulette">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lucianoadonis.github.io/wheel-of-excuses/">
+    <meta property="og:title" content="Accountability Roulette">
+    <meta property="og:description" content="Spin the wheel of accountability! A fun team tool to randomly select who's responsible.">
+    <meta property="og:image" content="https://lucianoadonis.github.io/wheel-of-excuses/android-chrome-512x512.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lucianoadonis.github.io/wheel-of-excuses/">
+    <meta property="twitter:title" content="Accountability Roulette">
+    <meta property="twitter:description" content="Spin the wheel of accountability! A fun team tool to randomly select who's responsible.">
+    <meta property="twitter:image" content="https://lucianoadonis.github.io/wheel-of-excuses/android-chrome-512x512.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#040714">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Disney+ Core Colors */
-            --disney-blue-dark: #040714;
-            --disney-blue-deep: #0E0B14;
-            --disney-blue-primary: #0063e5;
-            --disney-blue-bright: #4BA3FF;
-            --disney-purple-accent: #8A4FFF;
-            --disney-white: #f9f9f9;
-            --disney-gray: #cacaca;
-            --disney-gray-dark: #6c6c6c;
+            /* Brand Colors */
+            --brand-dark: #040714;
+            --brand-deep: #0E0B14;
+            --brand-primary: #0063e5;
+            --brand-bright: #4BA3FF;
+            --brand-purple: #8A4FFF;
+            --brand-white: #f9f9f9;
+            --brand-gray: #cacaca;
+            --brand-gray-dark: #6c6c6c;
 
             /* Wheel Segment Colors */
             --segment-1: #0063e5;
@@ -36,7 +72,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--disney-blue-dark);
+            background: var(--brand-dark);
             background-image:
                 radial-gradient(circle at 50% 50%, rgba(6, 99, 229, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(138, 79, 255, 0.05) 0%, transparent 40%);
@@ -105,7 +141,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: 700;
-            color: var(--disney-white);
+            color: var(--brand-white);
             text-shadow:
                 0 0 15px rgba(6, 99, 229, 0.5),
                 0 0 30px rgba(6, 99, 229, 0.3),
@@ -134,7 +170,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: clamp(0.7rem, 2vw, 1rem);
             font-weight: 500;
-            color: var(--disney-gray);
+            color: var(--brand-gray);
             letter-spacing: 0.15em;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
@@ -157,7 +193,7 @@
             height: 0;
             border-left: 25px solid transparent;
             border-right: 25px solid transparent;
-            border-top: 50px solid var(--disney-blue-primary);
+            border-top: 50px solid var(--brand-primary);
             filter: drop-shadow(0 4px 8px rgba(6, 99, 229, 0.6))
                     drop-shadow(0 0 15px rgba(6, 99, 229, 0.4));
             z-index: 10;
@@ -177,7 +213,7 @@
             transform: translateX(-50%);
             width: 20px;
             height: 20px;
-            background: var(--disney-blue-primary);
+            background: var(--brand-primary);
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(6, 99, 229, 0.8);
         }
@@ -202,7 +238,7 @@
             font-weight: 600;
             letter-spacing: 0.1em;
             padding: 0.9rem 2.5rem;
-            background: linear-gradient(135deg, var(--disney-blue-primary) 0%, var(--disney-blue-bright) 100%);
+            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-bright) 100%);
             color: #fff;
             border: none;
             border-radius: 40px;
@@ -276,7 +312,7 @@
         }
 
         .modal {
-            background: linear-gradient(135deg, var(--disney-blue-deep) 0%, rgba(6, 99, 229, 0.15) 100%);
+            background: linear-gradient(135deg, var(--brand-deep) 0%, rgba(6, 99, 229, 0.15) 100%);
             border-radius: 16px;
             padding: 3rem 2rem;
             max-width: 600px;
@@ -323,7 +359,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 700;
-            color: var(--disney-blue-bright);
+            color: var(--brand-bright);
             text-shadow:
                 0 0 20px rgba(75, 163, 255, 0.5),
                 0 4px 12px rgba(0, 0, 0, 0.6);
@@ -340,7 +376,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 1.3rem;
             font-weight: 500;
-            color: var(--disney-gray);
+            color: var(--brand-gray);
             letter-spacing: 0.15em;
             margin-bottom: 2rem;
             text-transform: uppercase;
@@ -353,14 +389,14 @@
 
         .excuse-item {
             background: rgba(6, 99, 229, 0.1);
-            border-left: 3px solid var(--disney-blue-primary);
+            border-left: 3px solid var(--brand-primary);
             padding: 1.2rem 1.5rem;
             margin-bottom: 1rem;
             border-radius: 6px;
             font-family: 'Montserrat', sans-serif;
             font-size: 1.05rem;
             font-weight: 400;
-            color: var(--disney-white);
+            color: var(--brand-white);
             line-height: 1.6;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             animation: slideInExcuse 0.6s ease-out backwards;
@@ -375,7 +411,7 @@
             top: 0;
             width: 3px;
             height: 100%;
-            background: linear-gradient(180deg, var(--disney-blue-bright), var(--disney-purple-accent));
+            background: linear-gradient(180deg, var(--brand-bright), var(--brand-purple));
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -386,17 +422,17 @@
 
         .excuse-item:nth-child(1) {
             animation-delay: 0.2s;
-            border-left-color: var(--disney-blue-primary);
+            border-left-color: var(--brand-primary);
         }
 
         .excuse-item:nth-child(2) {
             animation-delay: 0.4s;
-            border-left-color: var(--disney-blue-bright);
+            border-left-color: var(--brand-bright);
         }
 
         .excuse-item:nth-child(3) {
             animation-delay: 0.6s;
-            border-left-color: var(--disney-purple-accent);
+            border-left-color: var(--brand-purple);
         }
 
         @keyframes slideInExcuse {
@@ -416,7 +452,7 @@
             font-weight: 600;
             letter-spacing: 0.1em;
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--disney-blue-primary) 0%, var(--disney-purple-accent) 100%);
+            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-purple) 100%);
             color: #fff;
             border: none;
             border-radius: 40px;
@@ -444,7 +480,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--disney-blue-primary), var(--disney-blue-bright));
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-bright));
             color: white;
             border: none;
             font-size: 1.8rem;
@@ -467,7 +503,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.9);
-            background: linear-gradient(135deg, var(--disney-blue-deep) 0%, rgba(6, 99, 229, 0.15) 100%);
+            background: linear-gradient(135deg, var(--brand-deep) 0%, rgba(6, 99, 229, 0.15) 100%);
             border-radius: 16px;
             padding: 2rem;
             max-width: 500px;
@@ -513,14 +549,14 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--disney-blue-bright);
+            color: var(--brand-bright);
             margin: 0;
         }
 
         .help-close {
             background: none;
             border: none;
-            color: var(--disney-gray);
+            color: var(--brand-gray);
             font-size: 2.5rem;
             cursor: pointer;
             line-height: 1;
@@ -536,7 +572,7 @@
 
         .help-close:hover {
             background: rgba(6, 99, 229, 0.2);
-            color: var(--disney-white);
+            color: var(--brand-white);
         }
 
         .help-content {
@@ -552,7 +588,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem;
             font-weight: 600;
-            color: var(--disney-gray);
+            color: var(--brand-gray);
             margin-bottom: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -585,7 +621,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--disney-blue-bright);
+            color: var(--brand-bright);
             background: rgba(6, 99, 229, 0.2);
             padding: 0.4rem 0.8rem;
             border-radius: 4px;
@@ -596,7 +632,7 @@
         .help-desc {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
-            color: var(--disney-white);
+            color: var(--brand-white);
         }
 
         /* Hidden Easter Egg - Explosion Effect */
@@ -606,7 +642,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 69, 0, 0.8) 0%, rgba(4, 7, 20, 0.95) 50%, var(--disney-blue-dark) 100%);
+            background: radial-gradient(circle at center, rgba(255, 69, 0, 0.8) 0%, rgba(4, 7, 20, 0.95) 50%, var(--brand-dark) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -623,8 +659,8 @@
         }
 
         @keyframes explosionFlash {
-            0% { background: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(255, 69, 0, 0.8) 20%, var(--disney-blue-dark) 100%); }
-            100% { background: radial-gradient(circle at center, rgba(255, 69, 0, 0.8) 0%, rgba(4, 7, 20, 0.95) 50%, var(--disney-blue-dark) 100%); }
+            0% { background: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(255, 69, 0, 0.8) 20%, var(--brand-dark) 100%); }
+            100% { background: radial-gradient(circle at center, rgba(255, 69, 0, 0.8) 0%, rgba(4, 7, 20, 0.95) 50%, var(--brand-dark) 100%); }
         }
 
         .you-container {
@@ -643,7 +679,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: clamp(5rem, 20vw, 15rem);
             font-weight: 900;
-            color: var(--disney-white);
+            color: var(--brand-white);
             text-shadow:
                 0 0 40px rgba(255, 69, 0, 1),
                 0 0 80px rgba(255, 69, 0, 0.8),
@@ -689,7 +725,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: clamp(1.5rem, 4vw, 3rem);
             font-weight: 600;
-            color: var(--disney-white);
+            color: var(--brand-white);
             margin-top: 2rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -715,7 +751,7 @@
             position: absolute;
             width: 8px;
             height: 8px;
-            background: var(--disney-blue-bright);
+            background: var(--brand-bright);
             border-radius: 50%;
             animation: particleExplode 2s ease-out forwards;
             opacity: 0;
@@ -739,7 +775,7 @@
             transform: translateX(-50%);
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
-            color: var(--disney-gray);
+            color: var(--brand-gray);
             opacity: 0;
             animation: hintFadeIn 1s ease-out 1.5s forwards;
         }
@@ -1080,7 +1116,7 @@
                 ctx.restore();
             });
 
-            // Draw center circle with Disney+ blue theme
+            // Draw center circle with blue theme
             const centerRadius = radius * 0.18;
 
             // Outer glow
@@ -1125,7 +1161,7 @@
             ctx.fillStyle = shineGradient;
             ctx.fill();
 
-            // Draw question mark in center with Disney+ styling
+            // Draw question mark in center with brand styling
             ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
             ctx.shadowBlur = 4;
             ctx.shadowOffsetX = 2;
