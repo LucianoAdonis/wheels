@@ -879,6 +879,7 @@
         <div class="wheel-container">
             <div class="pointer"></div>
             <canvas id="wheelCanvas" class="wheel-canvas"></canvas>
+            <div style="position: absolute; top: -80px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px; z-index: 100;" id="debugInfo">Debug</div>
         </div>
 
         <button class="spin-button" id="spinButton">
@@ -1061,6 +1062,12 @@
         let currentRotation = 0;
         let isSpinning = false;
 
+        // Debug: Print roles order
+        console.log('📋 Roles order (index: name, key):');
+        roles.forEach((role, index) => {
+            console.log(`  ${index}: ${role.name} (key: ${role.key})`);
+        });
+
         function drawWheel() {
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
@@ -1176,6 +1183,16 @@
             ctx.shadowColor = 'rgba(6, 99, 229, 0.6)';
             ctx.shadowBlur = 8;
             ctx.fillText('?', centerX, centerY);
+
+            // Debug: Show which role is under the pointer
+            const debugInfo = document.getElementById('debugInfo');
+            if (debugInfo) {
+                const currentAngle = currentRotation % 360;
+                const normalizedRotation = (360 - currentAngle) % 360;
+                const segmentAngle = 360 / roles.length;
+                const currentSegmentIndex = Math.floor(normalizedRotation / segmentAngle);
+                debugInfo.textContent = `Pointing at: ${roles[currentSegmentIndex].name} (rot: ${currentAngle.toFixed(1)}°)`;
+            }
         }
 
         function spinWheel(targetRoleIndex = null) {
@@ -1193,20 +1210,31 @@
             let finalAngle;
             if (targetRoleIndex !== null) {
                 // Calculate angle to land on specific role
-                // The wheel is drawn with segments starting at -90° (top)
-                // Pointer is at top, so we need to calculate the rotation to bring target segment to top
                 const segmentAngle = 360 / roles.length;
-                const targetSegmentStart = targetRoleIndex * segmentAngle;
-                const targetSegmentCenter = targetSegmentStart + (segmentAngle / 2);
-                // Rotate to align target segment center with pointer (at top, which is 270° in our coordinate system)
-                const rotationNeeded = (360 - targetSegmentCenter) % 360;
-                finalAngle = rotationNeeded;
+                const targetFinalRotation = 360 - (targetRoleIndex * segmentAngle + segmentAngle / 2);
+
+                // CRITICAL: Account for the fractional part in degrees!
+                // After spinning, we'll be at (currentRotation + degrees) % 360
+                // Then we need to add finalAngle to reach targetFinalRotation
+                const totalAfterSpins = (currentRotation + degrees) % 360;
+                finalAngle = (targetFinalRotation - totalAfterSpins + 360) % 360;
+
+                console.log('🎯 Targeting:', roles[targetRoleIndex].name);
+                console.log('  targetRoleIndex:', targetRoleIndex);
+                console.log('  currentRotation:', currentRotation);
+                console.log('  degrees:', degrees);
+                console.log('  totalAfterSpins:', totalAfterSpins);
+                console.log('  targetFinalRotation:', targetFinalRotation);
+                console.log('  finalAngle:', finalAngle);
             } else {
                 // Random angle
                 finalAngle = Math.random() * 360;
             }
 
             const totalRotation = currentRotation + degrees + finalAngle;
+            console.log('  totalRotation:', totalRotation);
+            console.log('  totalRotation % 360:', totalRotation % 360);
+
             canvas.style.transform = `rotate(${totalRotation}deg)`;
 
             // Calculate winner
@@ -1216,11 +1244,17 @@
                 const segmentIndex = Math.floor(normalizedRotation / segmentAngle);
                 const selectedRole = roles[segmentIndex];
 
+                console.log('🏆 Winner calculation:');
+                console.log('  normalizedRotation:', normalizedRotation);
+                console.log('  segmentIndex:', segmentIndex);
+                console.log('  selectedRole:', selectedRole.name);
+
                 showModal(selectedRole);
 
                 currentRotation = totalRotation;
                 isSpinning = false;
                 spinButton.disabled = false;
+                drawWheel(); // Update debug info
             }, 6000);
         }
 
@@ -1357,6 +1391,7 @@
             const roleIndex = roles.findIndex(role => role.key === key);
             if (roleIndex !== -1 && !isSpinning) {
                 e.preventDefault();
+                console.log('🎹 Key pressed:', key, '→ targeting index', roleIndex, '(' + roles[roleIndex].name + ')');
                 spinWheel(roleIndex);
             }
         });
